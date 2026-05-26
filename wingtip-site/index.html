@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wingtip — Luckyman</title>
+  <meta name="description" content="Luckyman — the new album from Wingtip. Out now.">
+  <meta property="og:title" content="Wingtip — Luckyman">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.wingtipmusic.com">
+  <meta property="og:image" content="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/9f/3e/09/9f3e0989-9632-b2ee-86b0-99cbfe420b48/067003178259.png/1200x1200bb.jpg">
+  <meta property="og:description" content="Luckyman — the new album from Wingtip. Out now on all platforms.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <style>
+    /* ───────────────────────────────────────
+       RESET
+    ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* Pulled from the Luckyman cover art */
+      --bg:       #0b2a2a;          /* deep teal from the water */
+      --bg-grad:  #061e1e;          /* darker teal for gradient */
+      --gold:     #d4c476;          /* the title text color */
+      --pink:     #e8849a;          /* from the car */
+      --cream:    #f0ece2;          /* light text */
+      --muted:    rgba(240,236,226,0.5);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--cream);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ───────────────────────────────────────
+       FULL-SCREEN HERO
+    ─────────────────────────────────────── */
+    .hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem 1.5rem;
+      min-height: 100vh;
+      position: relative;
+
+      /* Subtle radial glow behind the artwork */
+      background:
+        radial-gradient(ellipse at 50% 45%, rgba(212,196,118,0.08) 0%, transparent 60%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-grad) 100%);
+    }
+
+    /* ─── Artist name (top) ─── */
+    .artist-name {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    /* ─── Album artwork ─── */
+    .album-art {
+      width: min(340px, 75vw);
+      height: min(340px, 75vw);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow:
+        0 8px 40px rgba(0,0,0,0.5),
+        0 0 80px rgba(212,196,118,0.06);
+      margin-bottom: 2rem;
+      transition: transform 0.4s ease;
+    }
+
+    .album-art:hover {
+      transform: scale(1.02);
+    }
+
+    .album-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ─── Album title + subtitle ─── */
+    .album-title {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.3rem;
+    }
+
+    .album-subtitle {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ─── Three buttons ─── */
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      width: min(320px, 85vw);
+    }
+
+    .action-btn {
+      display: block;
+      padding: 0.9rem 1.5rem;
+      border: 1px solid rgba(240,236,226,0.2);
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-align: center;
+      color: var(--cream);
+      background: rgba(240,236,226,0.04);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .action-btn:hover {
+      background: rgba(240,236,226,0.1);
+      border-color: rgba(240,236,226,0.4);
+    }
+
+    /* Highlight the primary CTA (Stream) */
+    .action-btn--primary {
+      background: var(--cream);
+      color: var(--bg);
+      border-color: var(--cream);
+    }
+
+    .action-btn--primary:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--bg-grad);
+    }
+
+    /* ─── Social links ─── */
+    .socials {
+      display: flex;
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+
+    .socials a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(240,236,226,0.15);
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .socials a:hover {
+      border-color: rgba(240,236,226,0.4);
+      background: rgba(240,236,226,0.06);
+    }
+
+    .socials svg {
+      width: 14px;
+      height: 14px;
+      fill: var(--cream);
+      opacity: 0.7;
+    }
+
+    .socials a:hover svg { opacity: 1; }
+
+    /* ─── Footer ─── */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ───────────────────────────────────────
+       MERCH PAGE (kept from previous build)
+       Loads when navigating to #merch or /merch
+    ─────────────────────────────────────── */
+
+    /* ─── Responsive polish ─── */
+    @media (min-width: 640px) {
+      .actions {
+        flex-direction: row;
+        width: auto;
+        gap: 1rem;
+      }
+      .action-btn {
+        padding: 0.9rem 2.5rem;
+      }
+    }
+
+    @media (max-height: 700px) {
+      .album-art {
+        width: min(240px, 60vw);
+        height: min(240px, 60vw);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="hero">
+
+    <p class="artist-name">Wingtip</p>
+
+    <!-- SOURCED: Album art from Apple Music CDN (Luckyman, 2025) -->
+    <div class="album-art">
+      <img
+        src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/9f/3e/09/9f3e0989-9632-b2ee-86b0-99cbfe420b48/067003178259.png/800x800bb.jpg"
+        alt="Luckyman — album artwork"
+        loading="eager"
+      >
+    </div>
+
+    <h1 class="album-title">Luckyman</h1>
+    <p class="album-subtitle">Out Now</p>
+
+    <!-- ─── The three buttons ─── -->
+    <div class="actions">
+      <!--
+        SOURCED: Spotify album link for Luckyman found via discography scrape.
+        You may want to replace this with a Linkfire / Songwhip smart-link
+        that lets fans pick Spotify vs Apple Music vs YouTube etc.
+      -->
+      <!-- SOURCED: Spotify album ID found via Spotify "More by Wingtip" section -->
+      <a class="action-btn action-btn--primary" href="https://open.spotify.com/album/3JyimcIUNsNaULF9FoSGDO" target="_blank" rel="noopener">
+        Stream
+      </a>
+
+      <!-- Links to the merch page (merch.html) which uses Stripe Checkout -->
+      <a class="action-btn" href="/merch.html">
+        Merch
+      </a>
+
+      <!-- SOURCED: Songkick artist ID 8890544 from songkick.com/artists/8890544-wingtip -->
+      <a class="action-btn" href="https://www.songkick.com/artists/8890544-wingtip" target="_blank" rel="noopener">
+        Tour Dates
+      </a>
+    </div>
+
+    <!-- SOURCED: All social links from current wingtipmusic.com -->
+    <div class="socials">
+      <a href="https://instagram.com/wingtipmusic" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+      <a href="https://twitter.com/itswingtip" target="_blank" rel="noopener" aria-label="X / Twitter">
+        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+      <a href="https://facebook.com/wingtipmusicpage" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://soundcloud.com/wingtipmusic" target="_blank" rel="noopener" aria-label="SoundCloud">
+        <svg viewBox="0 0 24 24"><path d="M1.175 12.225c-.051 0-.094.046-.101.1l-.233 2.154.233 2.105c.007.058.05.098.101.098.05 0 .09-.04.099-.098l.255-2.105-.27-2.154c-.009-.06-.05-.1-.1-.1m4.703-1.52c-.109 0-.197.094-.2.208l-.13 2.709.13 2.746c.003.113.091.206.2.206.109 0 .197-.093.2-.206l.149-2.746-.149-2.709c-.003-.114-.091-.208-.2-.208m4.704-.694c-.3 0-.592.037-.876.108a5.648 5.648 0 00-5.396-3.952c-.437 0-.866.058-1.276.168-.155.042-.197.088-.2.175v8.19c.003.09.076.165.168.175h7.58A3.235 3.235 0 0024 14.126a3.234 3.234 0 00-3.238-3.239"/></svg>
+      </a>
+    </div>
+
+  </main>
+
+  <footer>
+    &copy; 2026 Wingtip
+  </footer>
+
+</body>
+</html>

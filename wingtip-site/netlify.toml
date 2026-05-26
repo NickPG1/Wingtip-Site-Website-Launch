@@ -1,0 +1,26 @@
+# Netlify configuration
+# Docs: https://docs.netlify.com/configure-builds/file-based-configuration/
+
+[build]
+  # The static files live in the root (index.html, success.html, images/)
+  publish = "."
+  # Install stripe dependency for the serverless function
+  command = "npm install"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Redirect www → apex (or vice versa) — pick one:
+[[redirects]]
+  from = "https://wingtipmusic.com/*"
+  to = "https://www.wingtipmusic.com/:splat"
+  status = 301
+  force = true
+
+# Security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

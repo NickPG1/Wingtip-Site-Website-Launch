@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmed — Wingtip</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: linear-gradient(180deg, #0b2a2a 0%, #061e1e 100%);
+      color: #f0ece2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+      text-align: center;
+    }
+    .container { max-width: 480px; }
+    .checkmark {
+      width: 64px; height: 64px;
+      border: 2px solid #d4c476;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 1.8rem;
+      color: #d4c476;
+    }
+    h1 { font-size: 1.5rem; font-weight: 400; margin-bottom: 0.75rem; }
+    p { color: rgba(240,236,226,0.5); font-size: 0.9rem; line-height: 1.6; margin-bottom: 2rem; }
+    p a { color: #d4c476; text-decoration: none; }
+    .back-btn {
+      display: inline-block; padding: 0.75rem 2.5rem;
+      border: 1px solid rgba(240,236,226,0.2); color: #f0ece2;
+      text-decoration: none; font-size: 0.8rem; font-weight: 500;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      border-radius: 6px; transition: all 0.2s;
+    }
+    .back-btn:hover { background: rgba(240,236,226,0.1); border-color: rgba(240,236,226,0.4); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="checkmark">&#10003;</div>
+    <h1>Order Confirmed</h1>
+    <p>Thanks for your order! You'll receive a confirmation email from Stripe shortly. Questions? Reach out on Instagram <a href="https://instagram.com/wingtipmusic">@wingtipmusic</a>.</p>
+    <a class="back-btn" href="/">Back to Wingtip</a>
+  </div>
+</body>
+</html>
