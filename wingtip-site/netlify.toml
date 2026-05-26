@@ -3,7 +3,7 @@
 
 [build]
   # The static files live in the root (index.html, success.html, images/)
-  publish = "."
+  publish = "wingtip-site"
   # Install stripe dependency for the serverless function
   command = "npm install"
 
